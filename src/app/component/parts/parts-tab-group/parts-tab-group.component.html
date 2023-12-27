@@ -1,0 +1,11 @@
+<div
+  [ngClass]="[tabWrapperClassName, tabOption.value === showId ? 'selected' : '']"
+  *ngFor="let tabOption of tabOptions"
+>
+  <app-parts-button
+    [text]="tabOption.text"
+    [value]="tabOption.value"
+    [className]="buttonClassName"
+    (clickedValue)="clickedTabBtn($event)"
+  ></app-parts-button>
+</div>

@@ -1,0 +1,32 @@
+<div class="content">
+  <div class="content-header">
+    <div class="tab-wrapper">
+      <app-parts-tab-group
+        [tabOptions]="ctoption.mainTabOptions"
+        buttonClassName="main-button"
+        tabWrapperClassName="main-tab-wrapper"
+        [showId]="showId"
+        (clickedTabValue)="clickedMainTab($event)"
+      >
+      </app-parts-tab-group>
+    </div>
+  </div>
+  <div class="content-main">
+    <ng-container [ngSwitch]="showId">
+      <ng-container *ngSwitchCase="0">
+        <app-home></app-home>
+      </ng-container>
+      <ng-container *ngSwitchCase="1">
+        <app-experience></app-experience>
+      </ng-container>
+      <ng-container *ngSwitchCase="2">
+        <app-skill></app-skill>
+      </ng-container>
+      <ng-container *ngSwitchCase="3">
+        <app-qualification></app-qualification>
+      </ng-container>
+    </ng-container>
+  </div>
+  <div class="content-footer"></div>
+</div>
+<router-outlet></router-outlet>

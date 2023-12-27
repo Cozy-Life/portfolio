@@ -1,0 +1,153 @@
+@use './pallet';
+
+h1,
+h2,
+h3,
+p,
+div,
+input,
+body,
+button {
+  margin: 0;
+  padding: 0;
+  font-family: Meiryo UI;
+}
+
+.content {
+  min-width: 450px;
+
+  @media screen and (min-width: 800px) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    height: 80%;
+    box-shadow: 0 6px 17px 0 rgba(0, 0, 0, 0.1);
+    padding: 0px 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: pallet.$white-base;
+  }
+
+  .content-header {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: center;
+
+    .tab-wrapper {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .content-main {
+    width: 100%;
+    height: 80%;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+
+  .content-footer {
+    width: 100%;
+    height: 10%;
+  }
+
+  .base-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+    gap: 10%;
+
+    .base-header {
+      width: 100%;
+      height: 10%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  .chart-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+
+    @media screen and (min-width: 800px) {
+      display: flex;
+      flex-direction: row;
+      gap: 5%;
+      justify-content: center;
+      width: 80%;
+      height: 90%;
+    }
+  }
+
+  // 経験
+  #donut-chart-programing,
+  #donut-chart-library-framework,
+  #donut-chart-development-tool,
+  #donut-chart-database {
+    margin-top: 20px;
+
+    @media screen and (min-width: 800px) {
+      margin-top: 0px;
+    }
+  }
+
+  .legend {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 40%;
+
+    .legend-row {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      &:hover {
+        font-size: 20px;
+        font-weight: 700;
+      }
+    }
+
+    .color {
+      font-size: 25px;
+    }
+
+    .title {
+      font-size: 18px;
+      color: pallet.$black-base;
+    }
+  }
+
+  // スキル
+  #line-chart {
+    @media screen and (min-width: 800px) {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  .check-box-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-basis: 40%;
+
+    .color {
+      font-size: 25px;
+    }
+
+    .title {
+      color: pallet.$black-base;
+      font-size: 18px;
+    }
+  }
+}
