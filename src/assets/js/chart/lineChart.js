@@ -111,7 +111,7 @@
         .style('border-radius', 8 + 'px')
         .style('color', '#fff')
         .style('text-align', 'center')
-        .style('pointer-event', 'none')
+        .style('pointer-events', 'none')
         .style('display', 'none')
         .style('top', 0 + 'px')
         .style('left', 0 + 'px')
