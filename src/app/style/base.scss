@@ -1,5 +1,10 @@
 @use './pallet';
 
+* {
+  padding: 0;
+  margin: 0;
+}
+
 h1,
 h2,
 h3,
@@ -25,12 +30,12 @@ body {
   min-width: 450px;
   min-height: 500px;
   height: 100dvh;
-  display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 
   @media screen and (min-width: 800px) {
+    display: flex;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -122,21 +127,35 @@ body {
   }
 
   .bio-wrapper {
+    width: 60%;
+    font-size: 13px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
-    gap: 4px;
-    min-width: 500px;
-    font-size: 16px;
     color: pallet.$gray-dark;
 
     @media screen and (min-width: 800px) {
+      width: 65%;
+      gap: 4px;
       font-size: 18px;
     }
 
     .bio-row {
       display: flex;
       gap: 10px;
+
+      .year {
+        flex-basis: 20px;
+        @media screen and (min-width: 800px) {
+          flex-basis: auto;
+        }
+      }
+      .month {
+        flex-basis: 10px;
+        @media screen and (min-width: 800px) {
+          flex-basis: auto;
+        }
+      }
     }
   }
 
@@ -174,12 +193,20 @@ body {
     }
 
     .color {
-      font-size: 25px;
+      font-size: 15px;
+
+      @media screen and (min-width: 800px) {
+        font-size: 25px;
+      }
     }
 
     .title {
-      font-size: 18px;
+      font-size: 13px;
       color: pallet.$gray-dark;
+
+      @media screen and (min-width: 800px) {
+        font-size: 18px;
+      }
     }
   }
 
@@ -206,12 +233,19 @@ body {
     }
 
     .color {
-      font-size: 25px;
+      font-size: 15px;
+      @media screen and (min-width: 800px) {
+        font-size: 18px;
+      }
     }
 
     .title {
       color: pallet.$gray-dark;
-      font-size: 18px;
+      font-size: 13px;
+
+      @media screen and (min-width: 800px) {
+        font-size: 18px;
+      }
     }
   }
 
@@ -229,7 +263,7 @@ body {
     flex-direction: column;
     justify-content: flex-start;
     gap: 4px;
-    min-width: 500px;
+    width: 65%;
     font-size: 16px;
     color: pallet.$gray-dark;
 
@@ -240,6 +274,22 @@ body {
     .qualification-row {
       display: flex;
       gap: 10px;
+
+      .year {
+        flex-basis: 60px;
+
+        @media screen and (min-width: 800px) {
+          flex-basis: auto;
+        }
+      }
+
+      .month {
+        flex-basis: 40px;
+
+        @media screen and (min-width: 800px) {
+          flex-basis: auto;
+        }
+      }
     }
   }
 
