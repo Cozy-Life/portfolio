@@ -36,12 +36,23 @@ export class SkillComponent extends BaseComponent implements OnInit {
   }
 
   ngOnInit() {
-    LineChart.drawLineChart(
-      this.lineGraphObj.data,
-      this.lineGraphObj.graphId,
-      this.checkedMap,
-      450,
-      450
-    );
+    this.drawChart(this.lineGraphObj.data, this.lineGraphObj.graphId, this.checkedMap);
+  }
+
+  /**
+   * チェックボックスをクリックした時に発火する処理
+   */
+  onCheck() {
+    this.drawChart(this.lineGraphObj.data, this.lineGraphObj.graphId, this.checkedMap);
+  }
+
+  /**
+   * 折れ線グラフを描画する
+   * @param data
+   * @param graphId
+   * @param checkedMap
+   */
+  private drawChart(data: LineDataType[], graphId: string, checkedMap: Map<number, boolean>) {
+    LineChart.drawLineChart(data, graphId, checkedMap, 450, 450);
   }
 }

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-parts-check-box',
@@ -12,8 +12,19 @@ export class PartsCheckBoxComponent {
   @Input()
   isChecked: boolean;
 
+  @Input()
+  checkedMap: any;
+
+  @Output()
+  changeEvent: EventEmitter<any> = new EventEmitter();
+
   constructor() {
     this.id = 0;
     this.isChecked = false;
+  }
+
+  onChange(e: any, id: number) {
+    this.checkedMap.set(id, e.currentTarget.checked);
+    this.changeEvent.emit();
   }
 }

@@ -1,4 +1,4 @@
-<input type="checkbox" [id]="id" [checked]="isChecked" />
+<input type="checkbox" [id]="id" [checked]="isChecked" (change)="onChange($event, id)" />
 <label class="checkbox-label" [for]="id">
   <ng-content></ng-content>
 </label>
