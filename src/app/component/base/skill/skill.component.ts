@@ -40,8 +40,8 @@ export class SkillComponent extends BaseComponent implements OnInit {
       this.lineGraphObj.data,
       this.lineGraphObj.graphId,
       this.checkedMap,
-      470,
-      470
+      450,
+      450
     );
   }
 }

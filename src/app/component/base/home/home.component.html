@@ -1,1 +1,11 @@
-<p class="text">home works!</p>
+<div class="base-wrapper">
+  <div class="me-image"></div>
+  <div class="my-name">岡田　孟</div>
+  <div class="bio-wrapper">
+    <div class="bio-row" *ngFor="let row of bioDataList">
+      <div class="year">{{ row.year }}年</div>
+      <div class="year">{{ row.month }}月</div>
+      <div class="bio-content">{{ row.content }}</div>
+    </div>
+  </div>
+</div>

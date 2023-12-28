@@ -26,9 +26,10 @@
     <div class="legend">
       <div
         class="legend-row"
-        *ngFor="let row of legendData"
-        (mouseover)="mouseOverLegend(showCategoryId, row)"
+        *ngFor="let row of legendDataList; index as i"
+        (mouseover)="mouseOverLegend(showCategoryId, row, i)"
         (mouseout)="mouseOutLegend(showCategoryId)"
+        [style.opacity]="opacityLegendDataList[i]"
       >
         <span class="color" [ngStyle]="{ color: row.color }">⚫︎</span>
         <span class="title">{{ row.name }}</span>

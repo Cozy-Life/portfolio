@@ -7,8 +7,8 @@
   const DonutChart = {
     drawDonutChart: (data, id) => {
       const contents = d3.select('#' + id);
-      const WIDTH = 400;
-      const HEIGHT = 400;
+      const WIDTH = 300;
+      const HEIGHT = 300;
       const RADIUS = Math.min(WIDTH, HEIGHT) / 2;
 
       const arc = d3
@@ -26,8 +26,7 @@
         .append('svg')
         .attr('width', WIDTH)
         .attr('height', HEIGHT)
-        .attr('viewBox', [-WIDTH / 2, -HEIGHT / 2, WIDTH, HEIGHT])
-        .attr('style', 'max-width: 100%; height: auto;');
+        .attr('viewBox', [-WIDTH / 2, -HEIGHT / 2, WIDTH, HEIGHT]);
 
       svg
         .append('g')
@@ -50,7 +49,7 @@
         setOpacityNotHoverData(svg, targetData.data);
         displayText(svg, targetData.data);
         if (typeof mouseOverDonutChartFunc === 'function') {
-          mouseOverDonutChartFunc(targetData.data);
+          mouseOverDonutChartFunc(targetData);
         }
       }
 
@@ -63,7 +62,7 @@
         setOpacityDefault(svg);
         clearText(svg);
         if (typeof mouseOutDonutChartFunc === 'function') {
-          mouseOutDonutChartFunc(targetData.data);
+          mouseOutDonutChartFunc(targetData);
         }
       }
     },

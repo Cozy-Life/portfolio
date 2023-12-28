@@ -10,6 +10,7 @@ import { ExperienceComponent } from './component/base/experience/experience.comp
 import { PartsButtonComponent } from './component/parts/parts-button/parts-button.component';
 import { PartsTabGroupComponent } from './component/parts/parts-tab-group/parts-tab-group.component';
 import { PartsCheckBoxComponent } from './component/parts/parts-check-box/parts-check-box.component';
+import { FooterComponent } from './component/base/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -20,13 +21,11 @@ import { PartsCheckBoxComponent } from './component/parts/parts-check-box/parts-
     ExperienceComponent,
     PartsButtonComponent,
     PartsTabGroupComponent,
-    PartsCheckBoxComponent
+    PartsCheckBoxComponent,
+    FooterComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
