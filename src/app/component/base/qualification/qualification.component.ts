@@ -16,6 +16,7 @@ type QualificationDataType = {
 })
 export class QualificationComponent extends BaseComponent implements OnInit {
   qualilficationDataList: QualificationDataType[] = [];
+  isForPcDeviceSize = window.matchMedia('(min-width: 800px)').matches;
 
   constructor() {
     super();

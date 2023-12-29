@@ -1,39 +1,37 @@
-<div class="base-wrapper">
-  <div class="base-header">
-    <app-parts-tab-group
-      [tabOptions]="ctoption.experienceTabOptions"
-      buttonClassName="sub-button"
-      tabWrapperClassName="sub-tab-wrapper"
-      [showId]="showCategoryId"
-      (clickedTabValue)="clickedTabBtn($event)"
-    >
-    </app-parts-tab-group>
-  </div>
+<div class="base-header">
+  <app-parts-tab-group
+    [tabOptions]="ctoption.experienceTabOptions"
+    buttonClassName="sub-button"
+    tabWrapperClassName="sub-tab-wrapper"
+    [showId]="showCategoryId"
+    (clickedTabValue)="clickedTabBtn($event)"
+  >
+  </app-parts-tab-group>
+</div>
 
-  <div class="chart-wrapper" [ngSwitch]="showCategoryId">
-    <ng-container *ngSwitchCase="0">
-      <div id="donut-chart-programing"></div>
-    </ng-container>
-    <ng-container *ngSwitchCase="1">
-      <div id="donut-chart-library-framework"></div>
-    </ng-container>
-    <ng-container *ngSwitchCase="2">
-      <div id="donut-chart-development-tool"></div>
-    </ng-container>
-    <ng-container *ngSwitchCase="3">
-      <div id="donut-chart-database"></div>
-    </ng-container>
-    <div class="legend">
-      <div
-        class="legend-row"
-        *ngFor="let row of legendDataList; index as i"
-        (mouseover)="mouseOverLegend(showCategoryId, row, i)"
-        (mouseout)="mouseOutLegend(showCategoryId)"
-        [style.opacity]="opacityLegendDataList[i]"
-      >
-        <span class="color" [ngStyle]="{ color: row.color }">⚫︎</span>
-        <span class="title">{{ row.name }}</span>
-      </div>
+<div class="donut-chart-wrapper" [ngSwitch]="showCategoryId">
+  <ng-container *ngSwitchCase="0">
+    <div id="donut-chart-programing"></div>
+  </ng-container>
+  <ng-container *ngSwitchCase="1">
+    <div id="donut-chart-library-framework"></div>
+  </ng-container>
+  <ng-container *ngSwitchCase="2">
+    <div id="donut-chart-development-tool"></div>
+  </ng-container>
+  <ng-container *ngSwitchCase="3">
+    <div id="donut-chart-database"></div>
+  </ng-container>
+  <div class="legend">
+    <div
+      class="legend-row"
+      *ngFor="let row of legendDataList; index as i"
+      (mouseover)="mouseOverLegend(showCategoryId, row, i)"
+      (mouseout)="mouseOutLegend(showCategoryId)"
+      [style.opacity]="opacityLegendDataList[i]"
+    >
+      <span class="color" [ngStyle]="{ color: row.color }">⚫︎</span>
+      <span class="title">{{ row.name }}</span>
     </div>
   </div>
 </div>

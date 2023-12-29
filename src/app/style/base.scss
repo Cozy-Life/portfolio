@@ -20,6 +20,9 @@ button {
 
 body {
   background-color: pallet.$white-base;
+  width: 100dvw;
+  height: 100dvh;
+  overflow: hidden;
 
   @media screen and (min-width: 800px) {
     background-color: pallet.$yellow-base;
@@ -27,15 +30,14 @@ body {
 }
 
 .content {
-  min-width: 450px;
-  min-height: 500px;
-  height: 100dvh;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
+  min-width: 350px;
+  height: 100%;
 
   @media screen and (min-width: 800px) {
     display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -49,10 +51,14 @@ body {
   }
 
   .content-header {
-    width: 100%;
     height: 10%;
-    display: flex;
-    justify-content: center;
+
+    @media screen and (min-width: 800px) {
+      width: 100%;
+      height: 15%;
+      display: flex;
+      justify-content: center;
+    }
 
     .tab-wrapper {
       width: 100%;
@@ -62,10 +68,16 @@ body {
   }
 
   .content-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
     height: 80%;
-    margin-top: 24px;
-    margin-bottom: 8px;
+
+    @media screen and (min-width: 800px) {
+      height: 75%;
+    }
   }
 
   .content-footer {
@@ -73,7 +85,9 @@ body {
     height: 10%;
     background: pallet.$gray-base;
     position: fixed;
-    bottom: 0;
+    bottom: 0px;
+    opacity: 0.9;
+    z-index: 99;
 
     @media screen and (min-width: 800px) {
       border-radius: 0 0 50px 50px;
@@ -85,7 +99,7 @@ body {
     flex-direction: column;
     align-items: center;
     height: 100%;
-    gap: 3%;
+    gap: 14%;
 
     .base-header {
       width: 100%;
@@ -94,25 +108,21 @@ body {
       justify-content: center;
     }
   }
+}
 
-  .chart-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 5%;
+// ホーム
+app-home {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3%;
 
-    @media screen and (min-width: 800px) {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      gap: 0%;
-      width: 80%;
-      height: 90%;
-      margin-top: 10px;
-    }
+  @media screen and (min-width: 800px) {
+    width: 65%;
   }
 
-  // ホーム
   .me-image {
     background: url(../../assets/img/me.jpeg) no-repeat;
     background-size: contain;
@@ -127,7 +137,7 @@ body {
   }
 
   .bio-wrapper {
-    width: 60%;
+    width: 80%;
     font-size: 13px;
     display: flex;
     flex-direction: column;
@@ -135,7 +145,7 @@ body {
     color: pallet.$gray-dark;
 
     @media screen and (min-width: 800px) {
-      width: 65%;
+      width: 100%;
       gap: 4px;
       font-size: 18px;
     }
@@ -146,20 +156,50 @@ body {
 
       .year {
         flex-basis: 20px;
+
         @media screen and (min-width: 800px) {
           flex-basis: auto;
         }
       }
       .month {
         flex-basis: 10px;
+
         @media screen and (min-width: 800px) {
           flex-basis: auto;
         }
       }
     }
   }
+}
 
-  // 経験
+// 経験
+app-experience {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0%;
+
+  @media screen and (min-width: 800px) {
+    gap: 10%;
+  }
+
+  .donut-chart-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5%;
+
+    @media screen and (min-width: 800px) {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 10%;
+      width: 70%;
+    }
+  }
+
   #donut-chart-programing,
   #donut-chart-library-framework,
   #donut-chart-development-tool,
@@ -178,7 +218,7 @@ body {
       display: flex;
       flex-direction: column;
       flex-basis: 25%;
-      margin: 0 0 0 50px;
+      margin: 0;
     }
 
     .legend-row {
@@ -188,12 +228,11 @@ body {
 
       &:hover {
         font-size: 20px;
-        font-weight: 700;
       }
     }
 
     .color {
-      font-size: 15px;
+      font-size: 20px;
 
       @media screen and (min-width: 800px) {
         font-size: 25px;
@@ -201,7 +240,7 @@ body {
     }
 
     .title {
-      font-size: 13px;
+      font-size: 20px;
       color: pallet.$gray-dark;
 
       @media screen and (min-width: 800px) {
@@ -209,8 +248,33 @@ body {
       }
     }
   }
+}
 
-  // スキル
+// スキル
+app-skill {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14%;
+
+  .line-chart-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5%;
+
+    @media screen and (min-width: 800px) {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 0%;
+      height: 90%;
+      width: 70%;
+    }
+  }
+
   #line-chart {
     position: relative;
 
@@ -233,7 +297,8 @@ body {
     }
 
     .color {
-      font-size: 15px;
+      font-size: 20px;
+
       @media screen and (min-width: 800px) {
         font-size: 18px;
       }
@@ -241,15 +306,28 @@ body {
 
     .title {
       color: pallet.$gray-dark;
-      font-size: 13px;
+      font-size: 20px;
 
       @media screen and (min-width: 800px) {
         font-size: 18px;
       }
     }
   }
+}
 
-  // 資格
+// 資格
+app-qualification {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3%;
+  align-items: center;
+
+  @media screen and (min-width: 800px) {
+    width: 65%;
+  }
+
   .qualification-img {
     background: url(../../assets/img/qualification.jpg) no-repeat;
     background-size: contain;
@@ -264,11 +342,12 @@ body {
     justify-content: flex-start;
     gap: 4px;
     width: 65%;
-    font-size: 16px;
+    font-size: 14px;
     color: pallet.$gray-dark;
 
     @media screen and (min-width: 800px) {
       font-size: 18px;
+      width: 100%;
     }
 
     .qualification-row {
@@ -292,45 +371,45 @@ body {
       }
     }
   }
+}
 
-  // フッター
-  .footer-wrapper {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 5%;
+// フッター
+.footer-wrapper {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5%;
 
-    .x-logo {
-      background: url(../../assets/img/X-logo.svg) no-repeat;
-      background-size: contain;
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
-    }
+  .x-logo {
+    background: url(../../assets/img/X-logo.svg) no-repeat;
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
 
-    .instagram-logo {
-      background: url(../../assets/img/Instagram-logo.svg) no-repeat;
-      background-size: contain;
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
-    }
+  .instagram-logo {
+    background: url(../../assets/img/Instagram-logo.svg) no-repeat;
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
 
-    .github-logo {
-      background: url(../../assets/img/Github-logo.svg) no-repeat;
-      background-size: contain;
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
-    }
+  .github-logo {
+    background: url(../../assets/img/Github-logo.svg) no-repeat;
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
 
-    .youtube-logo {
-      background: url(../../assets/img/Youtube-logo.svg);
-      background-size: contain;
-      width: 30px;
-      height: 30px;
-      cursor: pointer;
-    }
+  .youtube-logo {
+    background: url(../../assets/img/Youtube-logo.svg);
+    background-size: contain;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
   }
 }

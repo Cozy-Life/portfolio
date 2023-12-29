@@ -1,18 +1,16 @@
-<div class="base-wrapper">
-  <div class="chart-wrapper">
-    <div id="line-chart"></div>
-    <div class="check-box-wrapper">
-      <div class="row" *ngFor="let row of lineGraphObj.data">
-        <app-parts-check-box
-          [id]="row.key"
-          [isChecked]="checkedMap.get(row.key) || false"
-          [checkedMap]="checkedMap"
-          (changeEvent)="onCheck()"
-        >
-          <span class="color" [ngStyle]="{ color: row.color }">⚫︎</span>
-          <span class="title">{{ row.title }}</span>
-        </app-parts-check-box>
-      </div>
+<div class="line-chart-wrapper">
+  <div id="line-chart"></div>
+  <div class="check-box-wrapper">
+    <div class="row" *ngFor="let row of lineGraphObj.data">
+      <app-parts-check-box
+        [id]="row.key"
+        [isChecked]="checkedMap.get(row.key) || false"
+        [checkedMap]="checkedMap"
+        (changeEvent)="onCheck()"
+      >
+        <span class="color" [ngStyle]="{ color: row.color }">⚫︎</span>
+        <span class="title">{{ row.title }}</span>
+      </app-parts-check-box>
     </div>
   </div>
 </div>

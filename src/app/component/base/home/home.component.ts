@@ -16,6 +16,7 @@ type BioDataType = {
 })
 export class HomeComponent extends BaseComponent implements OnInit {
   bioDataList: BioDataType[] = [];
+  isForPcDeviceSize = window.matchMedia('(min-width: 800px)').matches;
 
   constructor() {
     super();

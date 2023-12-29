@@ -1,10 +1,10 @@
-<div class="base-wrapper">
-  <div class="qualification-img"></div>
-  <div class="qualification-wrapper">
-    <div class="qualification-row" *ngFor="let row of qualilficationDataList">
-      <div class="year">{{ row.year }}年</div>
+<div class="qualification-img"></div>
+<div class="qualification-wrapper">
+  <div class="qualification-row" *ngFor="let row of qualilficationDataList">
+    <div class="year">{{ row.year }}年</div>
+    <ng-container *ngIf="isForPcDeviceSize">
       <div class="month">{{ row.month }}月</div>
-      <div class="name">{{ row.name }}</div>
-    </div>
+    </ng-container>
+    <div class="name">{{ row.name }}</div>
   </div>
 </div>
