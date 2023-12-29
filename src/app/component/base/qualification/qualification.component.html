@@ -1,7 +1,7 @@
 <div class="qualification-img"></div>
 <div class="qualification-wrapper">
   <div class="qualification-row" *ngFor="let row of qualilficationDataList">
-    <div class="year">{{ row.year }}年</div>
+    <div class="year">{{ row.year }}<ng-container *ngIf="isForPcDeviceSize">年</ng-container></div>
     <ng-container *ngIf="isForPcDeviceSize">
       <div class="month">{{ row.month }}月</div>
     </ng-container>
