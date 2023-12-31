@@ -55,7 +55,7 @@ export class SkillComponent extends BaseComponent implements OnInit {
   private drawChart(data: LineDataType[], graphId: string, checkedMap: Map<number, boolean>) {
     const isForPcDeviceSize = window.matchMedia('(min-width: 800px)').matches;
     if (isForPcDeviceSize) {
-      LineChart.drawLineChart(data, graphId, checkedMap, 450, 450);
+      LineChart.drawLineChart(data, graphId, checkedMap, 400, 400);
     } else {
       LineChart.drawLineChart(data, graphId, checkedMap, 350, 350);
     }

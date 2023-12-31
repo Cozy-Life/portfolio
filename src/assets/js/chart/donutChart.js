@@ -114,8 +114,15 @@
       .attr('transform', 'translate(' + 0 + ',' + -20 + ')')
       .attr('font-weight', 'bold')
       .attr('class', 'langulage')
-      .call((text) => text.append('tspan').attr('fill', `${targetData.color}`).text('⚫'))
-      .call((text) => text.append('tspan').text(`${targetData.name}`));
+      .call((text) =>
+        text
+          .append('tspan')
+          .attr('class', 'color')
+          .style('color', `${targetData.color}`)
+          .attr('fill', `${targetData.color}`)
+          .text('⚫')
+      )
+      .call((text) => text.append('tspan').attr('class', 'name').text(`${targetData.name}`));
   }
 
   /**

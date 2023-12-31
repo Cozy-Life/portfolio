@@ -102,6 +102,17 @@
         .attr('stroke-width', 1)
         .attr('stroke-dasharray', '4.2');
 
+      // ホバー時のグリッド線
+      const hoverLine = svg
+        .append('line')
+        .attr('class', 'grid-line')
+        .attr('y1', MARGIN.TOP)
+        .attr('y2', HEIGHT - MARGIN.BOTTOM)
+        .attr('stroke', 'red')
+        .attr('stroke-width', 1.4)
+        .attr('display', 'none')
+        .style('opacity', '0.5');
+
       const tooltip = contents
         .append('span')
         .attr('class', 'tooltip')
@@ -154,21 +165,27 @@
 
       function mouseOverLineChart() {
         tooltip.style('display', 'block');
+        hoverLine.attr('display', 'block');
       }
 
       function mouseOutLineChart() {
         tooltip.style('display', 'none');
+        hoverLine.attr('display', 'none');
       }
 
       function mouseMoveLineChart(e) {
+        const mouseX = e.offsetX;
         const focusData = getFocusData(e);
         setTooltipData(focusData);
         tooltip
           .transition()
           .duration(200)
           .ease(d3.easeLinear)
-          .style('left', xScale(focusData.date) + toolTipPosX(e) + 'px')
+          .style('left', mouseX + toolTipPosX(e) + 'px')
           .style('top', toolTipPosY(e) + 'px');
+
+        // ホバー線の位置を設定
+        hoverLine.attr('x1', mouseX).attr('x2', mouseX).attr('opacity', 1);
       }
 
       /**
@@ -199,8 +216,7 @@
       }
 
       function toolTipPosX(event) {
-        const rightPos = 40;
-        tooltip.style('display', 'block');
+        const rightPos = 0;
         const toolTipPos =
           d3.pointer(event)[0] > plotWidth / 2
             ? -rightPos - tooltip.node().getBoundingClientRect().width
