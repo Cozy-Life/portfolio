@@ -15,7 +15,9 @@ type BioDataType = {
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent extends BaseComponent implements OnInit {
+  /** プロフィール情報 */
   bioDataList: BioDataType[] = [];
+  /** PCデバイス判定フラグ */
   isForPcDeviceSize = window.matchMedia('(min-width: 800px)').matches;
 
   constructor() {

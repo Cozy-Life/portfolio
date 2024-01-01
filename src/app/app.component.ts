@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { BaseComponent } from './framework/BaseComponent';
+import { CtType } from './constants/CtType';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +9,7 @@ import { BaseComponent } from './framework/BaseComponent';
 })
 export class AppComponent extends BaseComponent implements OnInit {
   title = 'my-portfolio';
-  showId = '0';
+  showId = CtType.home;
 
   constructor() {
     super();
@@ -16,6 +17,10 @@ export class AppComponent extends BaseComponent implements OnInit {
 
   ngOnInit() {}
 
+  /**
+   * メインタブクリック処理
+   * @param clickedMainTabBtnVal
+   */
   clickedMainTab(clickedMainTabBtnVal: string) {
     this.showId = clickedMainTabBtnVal;
   }

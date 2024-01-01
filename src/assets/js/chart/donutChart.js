@@ -106,23 +106,29 @@
    * @param {*} targetData
    */
   function displayName(svg, targetData) {
-    svg
+    // const languageLengh = targetData.name.length;
+    // const languageCiclePosX = languageLengh < 5 ? -45 : -(languageLengh * 6.3);
+
+    const focusName = svg
       .append('text')
       .attr('font-family', 'sans-serif')
       .attr('font-size', 16)
       .attr('text-anchor', 'middle')
       .attr('transform', 'translate(' + 0 + ',' + -20 + ')')
       .attr('font-weight', 'bold')
-      .attr('class', 'langulage')
-      .call((text) =>
-        text
-          .append('tspan')
-          .attr('class', 'color')
-          .style('color', `${targetData.color}`)
-          .attr('fill', `${targetData.color}`)
-          .text('⚫')
-      )
+      .attr('class', 'focus-name')
       .call((text) => text.append('tspan').attr('class', 'name').text(`${targetData.name}`));
+
+    focusNameWidth = focusName.node().getBoundingClientRect().width;
+    svg
+      .append('circle')
+      .attr('font-family', 'sans-serif')
+      .attr('font-size', 16)
+      .attr('transform', 'translate(' + -(focusNameWidth / 2 + 6) + ',' + -26 + ')')
+      .attr('font-weight', 'bold')
+      .attr('class', 'focus-name-color')
+      .attr('r', '5')
+      .attr('fill', `${targetData.color}`);
   }
 
   /**
@@ -163,6 +169,7 @@
    */
   function clearText(svg) {
     svg.selectAll('text').remove();
+    svg.selectAll('circle').remove();
   }
 
   /**

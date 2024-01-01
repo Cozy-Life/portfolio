@@ -54,6 +54,10 @@ body {
   .content-header {
     height: 10%;
 
+    @media screen and (orientation: landscape) and (hover: none) {
+      height: 20%;
+    }
+
     @media screen and (min-width: 800px) {
       width: 100%;
       height: 15%;
@@ -76,6 +80,10 @@ body {
     width: 100%;
     height: 80%;
     overflow-y: auto;
+
+    @media screen and (orientation: landscape) and (hover: none) {
+      height: 70%;
+    }
 
     @media screen and (min-width: 800px) {
       height: 75%;
@@ -131,6 +139,11 @@ app-home {
     width: 150px;
     height: 194px;
     border-radius: 50%;
+
+    @media screen and (orientation: landscape) and (hover: none) {
+      width: 12%;
+      height: 40%;
+    }
   }
 
   .my-name {
@@ -331,6 +344,11 @@ app-qualification {
     width: 160px;
     height: 150px;
     border-radius: 50%;
+
+    @media screen and (orientation: landscape) and (hover: none) {
+      width: 17%;
+      height: 38%;
+    }
   }
 
   .qualification-wrapper {

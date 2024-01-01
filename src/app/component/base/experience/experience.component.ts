@@ -6,6 +6,7 @@ import { developmentToolData } from '../../../mock/developmentTool';
 import { databaseData } from '../../../mock/database';
 import { BaseComponent } from '../../../framework/BaseComponent';
 import { UtilCommon } from '../../../util/UtilCommon';
+import { CtType } from 'src/app/constants/CtType';
 
 declare var DonutChart: any;
 
@@ -32,12 +33,12 @@ export class ExperienceComponent extends BaseComponent implements OnInit, AfterV
   /** 経験データ格納リスト */
   dataList: DataType[][] = [];
   /** 表示カテゴリID */
-  showCategoryId = '0';
+  showCategoryId = CtType.programingLanguage;
   /** 凡例データ */
   legendDataList: DataType[] = [];
   /** 凡例データの透過度リスト */
   opacityLegendDataList: string[] = [];
-
+  /** カテゴリMap */
   categoryMap = new Map<string, CategoryMapValuType>();
 
   constructor(private changeDetector: ChangeDetectorRef) {
@@ -71,12 +72,9 @@ export class ExperienceComponent extends BaseComponent implements OnInit, AfterV
     if (UtilCommon.isEqual(clickedTabBtnVal, this.showCategoryId)) return;
 
     this.showCategoryId = clickedTabBtnVal;
-    const categoryMapData = this.categoryMap.get(this.showCategoryId);
 
-    if (!categoryMapData) return;
-
-    this.legendDataList = categoryMapData.data;
-    this.opacityLegendDataList = this.categoryMap.get(this.showCategoryId)?.opacityList || [];
+    this.legendDataList = this.categoryMap.get(this.showCategoryId)!.data;
+    this.opacityLegendDataList = this.categoryMap.get(this.showCategoryId)!.opacityList;
 
     this.changeDetector.detectChanges();
     this.drawChart(this.showCategoryId);
@@ -90,8 +88,7 @@ export class ExperienceComponent extends BaseComponent implements OnInit, AfterV
    * @returns
    */
   mouseOverLegend(showCategoryId: string, row: DataType, i: number) {
-    const categoryMapData = this.categoryMap.get(showCategoryId);
-    if (!categoryMapData) return;
+    const categoryMapData = this.categoryMap.get(showCategoryId)!;
 
     this.setFocusOpacity(categoryMapData, i);
     DonutChart.mouseOverLegend(categoryMapData.graphId, row);
@@ -103,8 +100,7 @@ export class ExperienceComponent extends BaseComponent implements OnInit, AfterV
    * @returns
    */
   mouseOutLegend(showCategoryId: string) {
-    const categoryMapData = this.categoryMap.get(showCategoryId);
-    if (!categoryMapData) return;
+    const categoryMapData = this.categoryMap.get(showCategoryId)!;
 
     this.setDefaultOpacity(categoryMapData);
     DonutChart.mouseOutLegend(categoryMapData.graphId);
@@ -132,8 +128,7 @@ export class ExperienceComponent extends BaseComponent implements OnInit, AfterV
   private setCategoryMap(dataList: DataType[][], categoryMap: Map<string, CategoryMapValuType>) {
     for (let i = 0; i < dataList.length; i++) {
       const value = this.ctoption.experienceTabOptions[i].value;
-      const graphId = this.ctoption.experienceTabOptions[i].graphId;
-      if (!graphId) return;
+      const graphId = this.ctoption.experienceTabOptions[i].graphId!;
 
       const opacityList = this.getOpacityList(dataList[i]);
       categoryMap.set(value, {
@@ -192,10 +187,7 @@ export class ExperienceComponent extends BaseComponent implements OnInit, AfterV
    * @returns
    */
   private mouseOverDonutCb(data: any) {
-    const categoryData = this.categoryMap.get(this.showCategoryId);
-    if (!categoryData) return;
-
-    this.setFocusOpacity(categoryData, data.index);
+    this.setFocusOpacity(this.categoryMap.get(this.showCategoryId)!, data.index);
   }
 
   /**
@@ -204,10 +196,7 @@ export class ExperienceComponent extends BaseComponent implements OnInit, AfterV
    * @returns
    */
   private mouseOutDonutCb(data: any) {
-    const categoryData = this.categoryMap.get(this.showCategoryId);
-    if (!categoryData) return;
-
-    this.setDefaultOpacity(categoryData);
+    this.setDefaultOpacity(this.categoryMap.get(this.showCategoryId)!);
   }
 
   /**
@@ -216,10 +205,9 @@ export class ExperienceComponent extends BaseComponent implements OnInit, AfterV
    * @returns
    */
   private drawChart(showCategoryId: string) {
-    const obj = this.categoryMap.get(showCategoryId);
-    if (!obj) return;
+    const { data, graphId } = this.categoryMap.get(showCategoryId)!;
 
-    this.createChart(obj.data, obj.graphId, 300, 300);
+    this.createChart(data, graphId, 300, 300);
   }
 
   /**

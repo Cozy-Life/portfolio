@@ -15,7 +15,9 @@ type QualificationDataType = {
   styleUrls: ['./qualification.component.scss'],
 })
 export class QualificationComponent extends BaseComponent implements OnInit {
+  /** 資格データリスト */
   qualilficationDataList: QualificationDataType[] = [];
+  /** PCデバイス判定フラグ */
   isForPcDeviceSize = window.matchMedia('(min-width: 800px)').matches;
 
   constructor() {

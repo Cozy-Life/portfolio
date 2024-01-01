@@ -18,7 +18,9 @@ type LineDataType = {
   styleUrls: ['./skill.component.scss'],
 })
 export class SkillComponent extends BaseComponent implements OnInit {
+  /** 折れ線グラフ用Object */
   lineGraphObj: { data: LineDataType[]; graphId: string; legendId: string };
+  /** 凡例チェックMap */
   checkedMap: Map<number, boolean>;
 
   constructor() {
